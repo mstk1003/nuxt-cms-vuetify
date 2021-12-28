@@ -1,0 +1,6 @@
+{
+  // ESLintのVSCode拡張機能により、保存時にフォーマットする
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}

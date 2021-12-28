@@ -1,0 +1,56 @@
+/**
+ * vue-eslint-parset (https://www.npmjs.com/package/vue-eslint-parser)を参考に設定
+ */
+{
+  /** 
+   * ESLint は、実行時のカレントディレクトリを起点にして、上位のディレクトリの設定ファイル (.eslintrc.*) を探索する。 
+   * root: true の指定があると、この探索をそこで停止する。
+   * リポジトリルートのeslintrcには、"root": true を設定する。
+   */
+  "root": true,
+  /** <template>内をlintできるようにパースする。 */
+  "parser": "vue-eslint-parser",
+  /**
+   * パーサーの設定をする。
+   * デフォルトでは、ES5(ECMAScript2009)の構文をパースできる。
+   * ES6以降の構文はパースできないので、ECMAScriptVersionを設定する必要がある（例）ecmaVersion: 2018
+   */
+  "parserOptions": {
+    // import/exportされるモジュールをパース可能にする。
+    "sourceType": "module",
+    // TypeScriptをパース可能にする。.vueの<script lang="ts">内もparserOptions.parserでパースされる。
+    // デフォルトで「ecmaVersion: 2018」が設定されている。
+    // https://www.npmjs.com/package/@typescript-eslint/parser
+    "parser": "@typescript-eslint/parser"
+  },
+  /** 
+   * 外部のeslintの設定を読み込む。
+   * 先の設定を、後の設定が上書きする。
+   */
+  "extends": [
+    // ESLintの推奨設定（https://eslint.org/docs/rules/）
+    "eslint:recommended",
+    // Vueの推奨設定：優先度C以上（https://jp.vuejs.org/v2/style-guide/index.html）
+    "plugin:vue/recommended",
+    "@nuxtjs",
+    "@nuxtjs/eslint-config-typescript"
+  ],
+  /**
+   * extendsの設定に定義されたルールに、追加/上書きする
+   */
+  "rules": {
+    // enable additional rules
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+
+    // override configuration set by extending "eslint:recommended"
+    "no-empty": "warn",
+    "no-cond-assign": ["error", "always"],
+    "vue/multi-word-component-names": "off",
+
+    // disable rules from base configurations
+     "for-direction": "off"
+  }
+}

@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+$color-body: #ffffff;
+$color-text: #000000;
+
+body {
+  background-color: $color-body;
+  color: $color-text;
+  text-align: center;
+}
+
+.container {
+  margin: 0 10px;
+  
+}
+
+.module-container {
+  margin: 10px 0px;
+}
