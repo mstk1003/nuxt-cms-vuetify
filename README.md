@@ -69,4 +69,13 @@ This directory contains your Vuex store files. Creating a file in this directory
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
 
 
-ssh-keygen -t ed25519 -C "tk.s.fanpuki.1003@gmail.com"
+### バグ
+#### レスポンシブモードでの無限ループエラー
+なぜかChrome開発者モードでレスポンシブモードにしていると
+ログイン画面→ログイン→エディタ→URLでログイン画面→ログイン→無限ループでエラー
+に陥る。
+
+レスポンシブモードを解除すると、上記手順を踏んでも無限ループにならない。
+
+#### vuexのエラー
+エディタ画面でログアウトボタン押下で、`[vuex] do not mutate vuex store state outside mutation handlers.`エラー。
